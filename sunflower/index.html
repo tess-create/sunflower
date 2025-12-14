@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunflower</title>
+
+<!-- iOS PWA settings -->
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont;
+}
+
+#sunflower {
+    width: 280px;
+    transition: transform 0.1s;
+}
+
+#message {
+    margin-top: 30px;
+    font-size: 22px;
+    color: #9c7a00;
+    opacity: 0;
+    transition: opacity 0.8s;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<img id="sunflower" src="sunflower.png">
+<div id="message"></div>
+
+<script>
+const messages = [
+    "You are my sunshine 🌞",
+    "My heart blooms for you 🌻",
+    "Your smile lights up my day ✨",
+    "You're my favorite sunflower 💛",
+    "With you, everything is warm ☀️",
+    "You make me happy 💕",
+    "Forever my sunflower 🌻"
+];
+
+const sunflower = document.getElementById("sunflower");
+const message = document.getElementById("message");
+
+sunflower.onclick = () => {
+    message.textContent = messages[Math.floor(Math.random() * messages.length)];
+    message.style.opacity = 0;
+
+    sunflower.style.transform = "rotate(10deg)";
+    setTimeout(() => sunflower.style.transform = "rotate(-10deg)", 100);
+    setTimeout(() => sunflower.style.transform = "rotate(5deg)", 200);
+    setTimeout(() => sunflower.style.transform = "rotate(0deg)", 300);
+
+    setTimeout(() => message.style.opacity = 1, 200);
+};
+</script>
+
+</body>
+</html>
